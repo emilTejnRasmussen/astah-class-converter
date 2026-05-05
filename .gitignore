@@ -1,4 +1,6 @@
 ### IntelliJ IDEA ###
+release/
+release.md
 .idea/
 *.iml
 out/
