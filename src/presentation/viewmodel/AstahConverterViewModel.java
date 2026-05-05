@@ -1,11 +1,10 @@
 package presentation.viewmodel;
 
 import entity.ClassModel;
-import service.AstahTextGenerator;
-import service.ClassParser;
-
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import service.AstahTextGenerator;
+import service.ClassParser;
 
 public class AstahConverterViewModel
 {
@@ -22,22 +21,71 @@ public class AstahConverterViewModel
 
     public void handleConversion(String javaClass)
     {
+        if (javaClass == null || javaClass.isBlank())
+        {
+            throw new IllegalArgumentException("Paste a Java class before converting.");
+        }
+
         classModel = classParser.stringToClassModel(javaClass);
     }
 
-    public void handleCopyAttributes()
+    public void reset()
     {
-        copyToClipboard(getAttributesText());
+        classModel = null;
     }
 
-    public void handleCopyOperations(boolean hidePrivateMethods)
+    public boolean hasClassName()
     {
-        copyToClipboard(getOperationsText(hidePrivateMethods));
+        return !getClassName().isBlank();
     }
 
-    public void handleCopyClassName()
+    public boolean hasAttributes()
     {
-        copyToClipboard(getClassName());
+        return !getAttributesText().isBlank();
+    }
+
+    public boolean hasOperations(boolean hidePrivateMethods)
+    {
+        return !getOperationsText(hidePrivateMethods).isBlank();
+    }
+
+    public String handleCopyAttributes()
+    {
+        String attributes = getAttributesText();
+
+        if (attributes.isBlank())
+        {
+            return "No attributes to copy.";
+        }
+
+        copyToClipboard(attributes);
+        return "Attributes copied.";
+    }
+
+    public String handleCopyOperations(boolean hidePrivateMethods)
+    {
+        String operations = getOperationsText(hidePrivateMethods);
+
+        if (operations.isBlank())
+        {
+            return "No operations to copy.";
+        }
+
+        copyToClipboard(operations);
+        return "Operations copied.";
+    }
+
+    public String handleCopyClassName()
+    {
+        String className = getClassName();
+
+        if (className.isBlank())
+        {
+            return "No class name to copy.";
+        }
+
+        copyToClipboard(className);
+        return "Class name copied.";
     }
 
     public String getClassName()

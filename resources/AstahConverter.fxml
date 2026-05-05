@@ -22,7 +22,7 @@
             </font>
         </Label>
         <VBox prefWidth="100.0" spacing="5.0">
-            <CheckBox fx:id="privateMethodsCheckBox" mnemonicParsing="false" text="include private methods" />
+            <CheckBox fx:id="privateMethodsCheckBox" mnemonicParsing="false" onMouseClicked="#handleCheckBoxPressed" text="include private methods" />
         </VBox>
         <Button mnemonicParsing="false" onAction="#convertPressed" prefHeight="40.0" prefWidth="99999.0" text="convert">
             <font>
@@ -41,17 +41,17 @@
             <Font name="Segoe UI Semibold" size="18.0" />
          </font>
       </Label>
-      <Button mnemonicParsing="false" onAction="#copyClassNamePressed" prefHeight="40.0" prefWidth="99999.0" text="copy class name">
+      <Button fx:id="copyClassNameBtn" mnemonicParsing="false" onAction="#copyClassNamePressed" prefHeight="40.0" prefWidth="99999.0" text="copy class name">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-        <Button mnemonicParsing="false" onAction="#copyAttributesPressed" prefHeight="40.0" prefWidth="99999.0" text="copy attributes">
+        <Button fx:id="copyAttributesBtn" mnemonicParsing="false" onAction="#copyAttributesPressed" prefHeight="40.0" prefWidth="99999.0" text="copy attributes">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button mnemonicParsing="false" onAction="#copyOperationsPressed" prefHeight="40.0" prefWidth="99999.0" text="copy operations">
+        <Button fx:id="copyOperationsBtn" mnemonicParsing="false" onAction="#copyOperationsPressed" prefHeight="40.0" prefWidth="99999.0" text="copy operations">
             <font>
                 <Font size="18.0" />
             </font>
