@@ -41,5 +41,5 @@ void main()
     System.out.println(generator.classModelToAstahFields(classModel));
 
     System.out.println("Operations for Astah:");
-    System.out.println(generator.classModelToAstahMethods(classModel));
+    System.out.println(generator.classModelToAstahMethods(classModel, true));
 }

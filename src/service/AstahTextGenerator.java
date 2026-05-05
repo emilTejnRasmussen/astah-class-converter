@@ -24,7 +24,7 @@ public class AstahTextGenerator
         return builder.toString();
     }
 
-    public String classModelToAstahMethods(ClassModel classModel)
+    public String classModelToAstahMethods(ClassModel classModel, boolean hidePrivateMethods)
     {
         StringBuilder builder = new StringBuilder();
 
@@ -40,6 +40,11 @@ public class AstahTextGenerator
 
         for (Method method : classModel.getMethods())
         {
+            if (hidePrivateMethods && method.visibility().equals("-"))
+            {
+                continue;
+            }
+
             builder.append(method.visibility())
                     .append(" ")
                     .append(method.name())
